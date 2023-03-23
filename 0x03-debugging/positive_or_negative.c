@@ -1,4 +1,7 @@
 #include "main.h"
+/**
+ * positive_or_negative - check for positive or negative numbers
+ */
 
 void positive_or_negative(int r)
 {
