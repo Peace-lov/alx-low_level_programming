@@ -1,11 +1,11 @@
 #include <stdio.h>
 
- /**
+/**
  * main - causes an infinite loop
- * printf("Infinite loop incoming :(\n"); printf("Infinite loop avoided! \\o/\n");
+ * Purpose - printf("Infinite loop incoming :(\n");
+ * printf("Infinite loop avoided! \\o/\n");
  * Return: 0
  */
-
 int main(void)
 {
 	int i;
