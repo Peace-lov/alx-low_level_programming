@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+
 /**
  * _puts_recursion - function that prints a string,
  * followed by a new line
@@ -10,5 +10,11 @@
 
 void _puts_recursion(char *s)
 {
-	printf("%s\n", s);
+	int z = 0;
+
+	for (; s[z] != '\0'; z++)
+	{
+		_putchar(s[z]);
+	}
+	_putchar('\n');
 }
