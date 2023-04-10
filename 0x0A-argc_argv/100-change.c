@@ -2,36 +2,57 @@
 #include <stdlib.h>
 
 /**
- * main - Prints the minimum number of coins to make change
- * @argc: argument count
- * @argv: argument array
- *
- * Return: 1
+ * main - Entry
+ * @argc: input
+ * @argv: input
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int coins[5] = {25, 10, 5, 2, 1};
-	int i;
-	int cent;
-	int num_coin;
+int cents, coins = 0;
 
-	for (i = 0; i < 5; i++)
-	{
-		if (argc != 2)
-		{
-			cent = atoi(argv[1]);
-			if (cent < 0)
-			{
-				printf("0\n");
-				return (0);
-			}
-			printf("Error\n");
-			return (1);
-		}
-		num_coin += cent /coins[i];
-		cent %= coins[i];
-	}
+if (argc == 2)
+{
+cents = atoi(*(argv + 1));
+if (cents < 0)
+{
+printf("0\n");
+}
 
-	printf("%d\n", num_coin);
-	return (0);
+while (cents > 0)
+{
+if (cents % 25 < cents)
+{
+cents -= 25;
+coins++;
+}
+else if (cents % 10 < cents)
+{
+cents -= 10;
+coins++;
+}
+else if (cents % 5 < cents)
+{
+cents -= 5;
+coins++;
+}
+else if (cents % 2 < cents)
+{
+cents -= 2;
+coins++;
+}
+else if (cents % 1 < cents)
+{
+cents -= 1;
+coins++;
+}
+}
+}
+else
+{
+printf("Error\n");
+return (1);
+}
+printf("%d\n", coins);
+return (0);
 }
