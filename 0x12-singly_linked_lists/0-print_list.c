@@ -4,7 +4,7 @@
 /**
  * print_list - Function that prints all elements
  * of a list.
- * @h: The head
+ * @h: The pointer
  *
  * Return: The number of nodes
  */
@@ -20,7 +20,7 @@ size_t print_list(const list_t *h)
 		}
 		else
 		{
-			printf("[%u] %s\n", h->len, h->str);
+			printf("[%d] %s\n", h->len, h->str);
 		}
 		h = h->next;
 		a++;
