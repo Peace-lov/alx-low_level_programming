@@ -4,6 +4,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
+ * struct listz_s - singly linked list
+ * @z: the pointer to the nodes
+ * @next: pointer to the next node
+ *
+ * Description: singly linked list of pointers
+ */
+typedef struct listz_s
+{
+	void *z;
+	struct listz_s *next;
+} listz_s;
+
+/**
  * struct listint_s - singly linked list
  * @n: integer
  * @next: points to the next node
