@@ -8,22 +8,29 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *high;
-	listint_t *low;
+	listint_t *high = head;
+	listint_t *low = head;
 
-	while (high && low)
+	while (high && low && high->next)
 	{
 		low = low->next;
 		high = high->next->next;
 		if (high == low)
 		{
+			head = high;
 			high = low;
-			while (high != low)
+			while (1)
 			{
-				high = high->next;
-				low = high->next;
+				low = high;
+				while (low->next != head && low->next != high)
+				{
+					low = low->next;
+				}
+				if (low->next == head)
+					break;
+				head = head->next;
 			}
-			return (high);
+			return (low->nex);
 		}
 	}
 	return (NULL);
