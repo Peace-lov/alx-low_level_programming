@@ -36,14 +36,14 @@ size_t print_listint_safe(const listint_t *head)
 	nw = 0;
 	while (head != NULL)
 	{
-		nw = malloc(sizeof(listz_s));
-		if (nw == 0)
+		pr = malloc(sizeof(listz_s));
+		if (pr == 0)
 			exit(98);
-		nw->z = (void *)head;
-		nw->next = pr;
-		pr = nw;
+		pr->z = (void *)head;
+		pr->next = nw;
+		nw = pr;
 
-		cu = pr;
+		cu = nw;
 		while (cu->next != NULL)
 		{
 			cu = cu->next;
