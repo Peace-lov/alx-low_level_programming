@@ -13,24 +13,24 @@ listint_t *find_listint_loop(listint_t *head)
 
 	while (high && low && high->next)
 	{
-		low = low->next;
+		head = head->next;
 		high = high->next->next;
-		if (high == low)
+		if (head == high)
 		{
-			head = high;
-			high = low;
+			head = low;
+			low = high;
 			while (1)
 			{
-				low = high;
-				while (low->next != head && low->next != high)
+				high = low;
+				while (high->next != head && high->next != low)
 				{
-					low = low->next;
+					high = high->next;
 				}
-				if (low->next == head)
+				if (high->next == head)
 					break;
 				head = head->next;
 			}
-			return (low->nex);
+			return (high->next);
 		}
 	}
 	return (NULL);

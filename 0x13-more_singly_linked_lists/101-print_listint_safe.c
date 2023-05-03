@@ -10,10 +10,10 @@ void free_listz(listz_s **head)
 	listz_s *tp;
 	listz_s *pres;
 
-	if (head != NULL)
+	if (head)
 	{
 		pres = *head;
-		while ((tp = pres) != 0)
+		while ((tp = pres) != NULL)
 		{
 			pres = pres->next;
 			free(tp);
@@ -33,12 +33,13 @@ size_t print_listint_safe(const listint_t *head)
 	listz_s *nw, *pr, *cu;
 	size_t y = 0;
 
-	nw = 0;
-	while (head != NULL)
+	nw = NULL;
+	while (head)
 	{
 		pr = malloc(sizeof(listz_s));
-		if (pr == 0)
+		if (pr == NULL)
 			exit(98);
+
 		pr->z = (void *)head;
 		pr->next = nw;
 		nw = pr;
@@ -50,7 +51,7 @@ size_t print_listint_safe(const listint_t *head)
 			if (head == cu->z)
 			{
 				printf("-> [%p] %d\n", (void *)head, head->n);
-				free_listz(&pr);
+				free_listz(&nw);
 				return (y);
 			}
 		}
@@ -58,6 +59,6 @@ size_t print_listint_safe(const listint_t *head)
 		head = head->next;
 		y++;
 	}
-	free_listz(&pr);
+	free_listz(&nw);
 	return (y);
 }
