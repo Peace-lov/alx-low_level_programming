@@ -22,16 +22,16 @@ int main(int argc, char *argv[])
 	opera = argv[2];
 	arg2 = atoi(argv[3]);
 
-	if (get_op_func(op) == NULL || opera[1] != '\0')
+	if (get_op_func(opera) == NULL || opera[1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if (*opera == '/' && arg2 == 0 || *opera == '%' && arg2 == 0)
+	if ((*opera == '/' && arg2 == 0) || (*opera == '%' && arg2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	printf("%d\n", get_op_func(op)(arg1, arg2));
+	printf("%d\n", get_op_func(opera)(arg1, arg2));
 	return (0);
 }
