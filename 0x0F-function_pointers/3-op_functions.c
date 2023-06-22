@@ -3,7 +3,7 @@
  * op_add - program that perform add operator
  * @a: first operand
  * @b: second operand
- * Return: 0
+ * Return: a + b
  */
 int op_add(int a, int b)
 {
@@ -14,7 +14,7 @@ int op_add(int a, int b)
  * op_sub - perforn subtraction operator
  * @a: first operator
  * @b: second operator
- * Return: 0
+ * Return: a - b
  */
 int op_sub(int a, int b)
 {
@@ -25,7 +25,7 @@ int op_sub(int a, int b)
  * op_mul - performs multiplication operand
  * @a: first operator
  * @b: second operator
- * Return: 0
+ * Return: a * b
  */
 int op_mul(int a, int b)
 {
@@ -35,7 +35,7 @@ int op_mul(int a, int b)
  * op_div - performs division operator
  * @a: first operand
  * @b: second operand
- * Return: 0
+ * Return: a / b
  */
 int op_div(int a, int b)
 {
@@ -45,7 +45,7 @@ int op_div(int a, int b)
  * op_mod - performs modulo operand
  * @a: first operand
  * @b: second operand
- * Return: 0
+ * Return: a % b
  */
 int op_mod(int a, int b)
 {

@@ -1,5 +1,4 @@
 #include "3-calc.h"
-#include <stdio.h>
 /**
  * main - Performs simple operarions
  * @argc: argument count
@@ -7,7 +6,7 @@
  *
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	int arg1;
 	int arg2;
