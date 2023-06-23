@@ -11,10 +11,9 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list print_num;
 	unsigned int a, b;
 
-	va_start(print_num, n);
-
 	if (separator == NULL)
 		return;
+	va_start(print_num, n);
 	for (a = 0; a < n; a++)
 	{
 		b = va_arg(print_num, int);
