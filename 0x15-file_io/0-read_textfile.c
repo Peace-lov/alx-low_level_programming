@@ -22,12 +22,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	buff = malloc(sizeof(char) * letters);
 
-	if (buff == NULL)
-		return (0);
 	byread = read(file_descriptor, buff, letters);
 
-	if (byread < 0)
-		return (0);
 	bywrite = write(STDOUT_FILENO, buff, byread);
 
 	if (bywrite < 1)
