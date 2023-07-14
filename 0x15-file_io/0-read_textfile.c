@@ -20,7 +20,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	{
 		return (0);
 	}
-	buff = malloc(sizeof(char) * (letters));
+	buff = malloc(sizeof(char) * letters);
 
 	if (buff == NULL)
 		return (0);
@@ -33,9 +33,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (bywrite < 1)
 		return (0);
 
-	close(file_descriptor);
-
 	free(buff);
+
+	close(file_descriptor);
 
 	return (bywrite);
 }
