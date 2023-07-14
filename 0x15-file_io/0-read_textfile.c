@@ -26,9 +26,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	bywrite = write(STDOUT_FILENO, buff, byread);
 
-	if (bywrite < 1)
-		return (0);
-
 	free(buff);
 
 	close(file_descriptor);
