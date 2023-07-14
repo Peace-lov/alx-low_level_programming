@@ -23,9 +23,6 @@ int create_file(const char *filename, char *text_content)
 
 	bywrt = write(file_descriptor, text_content, len);
 
-	if (!file_descriptor || !bywrt)
-		return (-1);
-
 	close(file_descriptor);
 
 	return (1);
