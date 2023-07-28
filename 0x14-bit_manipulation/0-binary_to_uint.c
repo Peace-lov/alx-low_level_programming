@@ -14,9 +14,9 @@ unsigned int binary_to_uint(const char *b)
 		return (0);
 	while (b[a] != '\0')
 	{
-		if (b[a] < 48 || b[a] > 49)
+		if (b[a] < '0' || b[a] > '1')
 			return (0);
-		val = 2 * val + (b[a] - 48);
+		val = 2 * val + (b[a] - '0');
 		a++;
 	}
 	return (val);
