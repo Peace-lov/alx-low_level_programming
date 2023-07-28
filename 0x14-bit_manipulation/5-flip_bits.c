@@ -9,10 +9,13 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned long int change = n ^ m;
 	unsigned long int store_ch;
+	int count = 0, a = 63;
 
-	for (; change > 0; change >>= 1)
+	for (; a >= 0; a--)
 	{
-		store_ch += (change & 1);
+		store_ch = change >> a;
+		if (store_ch & 1)
+			count++;
 	}
-	return (store_ch);
+	return (count);
 }
