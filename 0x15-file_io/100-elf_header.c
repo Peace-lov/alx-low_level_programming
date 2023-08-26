@@ -1,64 +1,60 @@
 #include "main.h"
 /**
  * elf_header - prints elf header information
- * @h: pointer
+ * @name: pointer
  *
  * Return: Nothing
  */
-void elf_header(const Elf64_Ehdr *h)
+void elf_header(const char *name)
 {
-	int c = 0;
+	Elf64_Ehdr h;
+	int f_d = (name, O_RDONLY);
 
-	printf("Magic: ");
-	while (c < 16)
+	if (fd == -1)
 	{
-		printf("%02x ", h->e_ident[c]);
-		c++;
+		printf("Error opening file.\n");
+		exit(98);
 	}
-	printf("\nClass: %d-bit\n", h->e_ident[4] == 1 ? 32 : 64);
-	printf("Data: %s\n", h->e_ident[5] == 1 ? "little" : "big");
-	printf("Version: %d\n", h->e_version);
-	printf("OS/ABI: %d\n", h->e_ident[7]);
-	printf("ABI Version: %d\n", h->e_ident[8]);
-	printf("Type: %d\n", h->e_type);
-	printf("Entry point address: 0x%lx\n", (unsigned long)h->e_entry);
+	if (read(f_d, &hder, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
+	{
+		printf("Error reading ELF header.\n");
+		close(f_d);
+		exit(98);
+	}
+	if (h.e_ident[0] != 0x7F ||
+			h.e_ident[1] != 'E' ||
+			h.e_ident[2] != 'L' ||
+			h.e_ident[3] != 'F')
+	{
+		printf("Not an ELF file.\n");
+		close(f_d);
+		exit(98);
+	}
+	printf("Magic: %02x %02x %02x %02x\n", h.e_ident[0], h.e_ident[1], h.e_ident[2], h.e_ident[3]);
+	printf("Class: %d-bit\n", h.e_ident[4] == 1 ? 32 : 64);
+	printf("Data: %s\n", h.e_ident[5] == 1 ? "Little-endian" : "Big-endian");
+	printf("Version: %d\n", h.e_ident[6]);
+	printf("OS/ABI: %d\n", h.e_ident[7]);
+	printf("ABI Version: %d\n", h.e_ident[8];
+	printf("Type: %d\n", h.e_type);
+	printf("Entry point address: 0x%lx\n", (unsigned long) h.e_entry);
+	close(f_d);
 }
 /**
  * main - check for Elf file
- * @argc: argument count
- * @argv: argument vector
+ * @ac: argument count
+ * @av: argument vector
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int ac, char *av[])
 {
-	Elf64_Ehdr h;
-	int file_des;
-	ssize_t rd_byt;
-
-	if (argc != 2)
+	if (ac != 2)
 	{
-		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
-		return (98);
+		printf("Usage: %s elf_filename\n", av[0]);
+		return (1);
 	}
 
-	file_des = open(argv[1], O_RDONLY);
+	elf_header(av[1]);
 
-	if (file_des == -1)
-	{
-		perror("Error ");
-		return (98);
-	}
-
-	rd_byt = read(file_des, &h, sizeof(Elf64_Ehdr));
-
-	if (rd_byt != sizeof(Elf64_Ehdr))
-	{
-		fprintf(stderr, "Error\n");
-		close(file_des);
-		return (98);
-	}
-	elf_header(&h);
-
-	close(file_des);
 	return (0);
 }

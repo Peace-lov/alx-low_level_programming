@@ -10,6 +10,7 @@
 
 #define BUF_SZ 1024
 #define F_P (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
+#define EI_NIDENT 16
 
 /**
  * struct Elf64_Ehdr - ELF header
@@ -31,25 +32,26 @@
  */
 typedef struct Elf64_Ehdr
 {
-	unsigned char e_ident[16];
+	unsigned char e_ident[EI_NIDENT];
 	uint16_t	e_ehsize;
-	uint16_t	e_entry;
-	uint16_t	e_flag;
+	uint64_t	e_entry;
+	uint32_t	e_flag;
 	uint16_t	e_machine;
 	uint16_t	e_phentsize;
 	uint16_t	e_phnum;
-	uint16_t	e_phoff;
+	uint64_t	e_phoff;
 	uint16_t	e_shentsize;
 	uint16_t	e_shnum;
-	uint16_t	e_shoff;
+	uint64_t	e_shoff;
 	uint16_t	e_shstrndx;
 	uint16_t	e_type;
-	uint16_t	e_version;
+	uint32_t	e_version;
 } Elf64_Ehdr;
 
 ssize_t read_textfile(const char *filename, size_t letters);
 int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
 void exit_err(int fd);
+void elf_header(const char *name)
 
 #endif
