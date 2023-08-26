@@ -1,6 +1,8 @@
 #include "main.h"
 /**
  * exit_err - Exits error
+ * @cd: code
+ * @words: arguments
  * Return: Returns nothing
  */
 void exit_err(int cd, const char *words)
