@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * exit_err - Exits error
- * @f_d: close fd
+ * @fd: close fd
  * Return: Returns nothing
  */
 void exit_err(int fd)
@@ -30,7 +30,7 @@ int main(int ac, char *av[])
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, F_P);
@@ -49,7 +49,7 @@ int main(int ac, char *av[])
 	}
 	if (bytrd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
