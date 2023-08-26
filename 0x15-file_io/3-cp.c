@@ -1,16 +1,14 @@
 #include "main.h"
 /**
  * exit_err - Exits error
- * @cd: code
- * @words: arguments
+ * @f_d: close fd
  * Return: Returns nothing
  */
-void exit_err(int cd, const char *words)
+void exit_err(int f_d)
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", words);
-	exit(cd);
+	dprintf(STDERR_FILENO, "Error: Can't close f_d %d\n", f_d);
+	exit(100);
 }
-
 /**
  * main - checks my code(cd)
  * @ac: Argument count
@@ -57,7 +55,8 @@ int main(int ac, char *av[])
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
-		exit_err(100, "Can't close fd FD_VALUE");
+		exit_err(fd_from);
+		exit_err(fd_to);
 	}
 	return (0);
 }
