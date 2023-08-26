@@ -32,23 +32,23 @@ int main(int ac, char *av[])
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
-		exit_err(98, "Can't read from file av[1]");
+		exit_err(98, "Can't read from file %s", file_from);
 	}
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, F_P);
 	if (fd_to == -1)
 	{
-		exit_err(99, "Can't write to file av[2]");
+		exit_err(99, "Can't write to file %s", file_to);
 	}
 	while ((bytrd = read(fd_from, buf, BUF_SZ)) > 0)
 	{
 		if (write(fd_to, buf, bytrd) == -1)
 		{
-			exit_err(99, "Can't write to file av[2]");
+			exit_err(99, "Can't write to file %s", file_to);
 		}
 	}
 	if (bytrd == -1)
 	{
-		exit_err(98, "Can't read from file av[1]");
+		exit_err(98, "Can't read from file %s", file_from);
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
