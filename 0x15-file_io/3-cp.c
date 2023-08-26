@@ -1,4 +1,4 @@
-#include "shell"
+#include "main.h"
 /**
  * exit_err - Exits error
  * Return: Returns nothing
@@ -23,7 +23,7 @@ int main(int ac, char *av[])
 	const char *file_from = av[1];
 	const char *file_to = av[2];
 
-	if (argc != 3)
+	if (ac != 3)
 	{
 		exit_err(97, "Usage: cp file_from file_to");
 	}
