@@ -55,5 +55,5 @@ int main(int ac, char *av[])
 	}
 	if (close(fd_f) == -1 || close(fd_t) == -1)
 		exit_err(fd_f), exit_err(fd_t);
-	return (0)
+	return (0);
 }
