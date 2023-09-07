@@ -8,14 +8,14 @@
 void elf_header(const char *name)
 {
 	Elf64_Ehdr h;
-	int f_d = (name, O_RDONLY);
+	int f_d = open(name, O_RDONLY);
 
-	if (fd == -1)
+	if (f_d == -1)
 	{
 		printf("Error opening file.\n");
 		exit(98);
 	}
-	if (read(f_d, &hder, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
+	if (read(f_d, &h, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 	{
 		printf("Error reading ELF header.\n");
 		close(f_d);
@@ -35,7 +35,7 @@ void elf_header(const char *name)
 	printf("Data: %s\n", h.e_ident[5] == 1 ? "Little-endian" : "Big-endian");
 	printf("Version: %d\n", h.e_ident[6]);
 	printf("OS/ABI: %d\n", h.e_ident[7]);
-	printf("ABI Version: %d\n", h.e_ident[8];
+	printf("ABI Version: %d\n", h.e_ident[8]);
 	printf("Type: %d\n", h.e_type);
 	printf("Entry point address: 0x%lx\n", (unsigned long) h.e_entry);
 	close(f_d);
@@ -57,3 +57,4 @@ int main(int ac, char *av[])
 	elf_header(av[1]);
 
 	return (0);
+}
