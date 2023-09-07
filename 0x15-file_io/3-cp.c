@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * exit_err - Exits error
- * @fd - close fd
+ * @fd: close fd
  * Return: Returns nothing
  */
 void exit_err(int fd)
@@ -10,7 +10,6 @@ void exit_err(int fd)
 	exit(100);
 }
 /**
- *
  * main - checks my code(cd)
  * @ac: Argument count
  * @av: Argument vector
