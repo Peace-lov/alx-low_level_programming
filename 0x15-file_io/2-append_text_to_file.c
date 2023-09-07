@@ -9,16 +9,14 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int file_desp, write_file, i = 0, len = 0;
+	int file_desp, write_file, len = 0;
 
 	if (filename == NULL)
 		return (-1);
 	if (text_content != NULL)
 	{
-		while (text_content[i])
-		{
-			len = i++;
-		}
+		while (text_content[len])
+			len++;
 	}
 	file_desp = open(filename, O_WRONLY | O_APPEND);
 
