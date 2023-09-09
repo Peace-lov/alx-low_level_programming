@@ -6,7 +6,7 @@
  */
 void p_err(const char *err_message)
 {
-	fprintf(stderr, "%s\n", err_message);
+	dprintf(STDERR_FILENO, "%s\n", err_message);
 }
 /**
  * elf_header - prints elf header information
@@ -56,7 +56,7 @@ int main(int ac, char *av[])
 {
 	if (ac != 2)
 	{
-		fprintf(stderr, "Usage: %s elf_filename\n", av[0]);
+		dprintf(STDERR_FILENO, "Usage: %s elf_filename\n", av[0]);
 		return (1);
 	}
 
