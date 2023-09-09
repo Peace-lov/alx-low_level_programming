@@ -46,7 +46,12 @@ void elf_header(const char *name)
 
 	close(f_d);
 }
-
+/**
+ * main - checks the code
+ * @ac: Argument count
+ * @av: Argument vector
+ * Return: 0 on success
+ */
 int main(int ac, char *av[])
 {
 	if (ac != 2)
@@ -57,5 +62,5 @@ int main(int ac, char *av[])
 
 	elf_header(av[1]);
 
-	return 0;
+	return (0);
 }
