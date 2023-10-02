@@ -267,12 +267,12 @@ void close_elf(int elf)
 
 int main(int argc, char *argv[])
 {
-	(void)argc;
-	int fd;
+	int fd = open(argv[1], O_RDONLY);
+
 	int rd;
 	Elf64_Ehdr *header;
+	(void)argc;
 
-	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
@@ -289,7 +289,8 @@ int main(int argc, char *argv[])
 	rd = read(fd, header, sizeof(Elf64_Ehdr));
 	if (rd == -1)
 	{
-		free(header), close_elf(fd);
+		free(header);
+		close_elf(fd);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
@@ -303,6 +304,7 @@ int main(int argc, char *argv[])
 	abi_printer(header->e_ident);
 	type_printer(header->e_type, header->e_ident);
 	entry_pt(header->e_entry, header->e_ident);
-	free(header), close_elf(fd);
+	free(header);
+	close_elf(fd);
 	return (0);
 }
