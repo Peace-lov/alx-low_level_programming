@@ -12,8 +12,7 @@
  * in the list. it uses the square root of the list
  * size as the jump step
  */
-listint_t *jump_list(listint_t *list, size_t size,
-				int value)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
 	size_t stp, stp_sz;
 	listint_t *nd, *jp;
@@ -23,26 +22,23 @@ listint_t *jump_list(listint_t *list, size_t size,
 
 	stp = 0;
 	stp_sz = sqrt(size);
-	for (nd = jp = list; jp->index + 1 < size &&
-				jp->n < value;)
+	for (nd = jp = list; jp->index + 1 < size && jp->n < value;)
 	{
 		nd = jp;
-		for (stp += stp_sz; jp->index < stp;
-				jp = jp->next)
+		for (stp += stp_sz; jp->index < stp; jp = jp->next)
 		{
 			if (jp->index + 1 == size)
 				break;
 		}
-		printf("Value checked at index [%ld] = [%d]\n",
-					jp->index, jp->n);
+		printf("Value checked at index [%ld] = [%d]\n", jp->index, jp->n);
 	}
-	printf("Value found between indexes [%ld] and [%ld]\n",
-				nd->index, jp->index);
+	printf("Value found between indexes [%ld] and [%ld]\n", nd->index, jp->index);
 
 	for (; nd->index < jp->index && nd->n < value; nd = nd->next)
-		printf("Value checked at index [%ld] = [%d]\n",
-					nd->index, nd->n);
-	printf("Value checked at index [%ld] = [%d]\n", nd->index,
-						nd->n);
+	{
+		printf("Value checked at index [%ld] = [%d]\n", nd->index, nd->n);
+	}
+	printf("Value checked at index [%ld] = [%d]\n", nd->index, nd->n);
+
 	return (nd->n == value ? nd : NULL);
 }
