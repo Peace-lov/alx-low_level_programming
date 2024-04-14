@@ -36,7 +36,7 @@ int binary_search_recursion(int *array, int value,
 			return (binary_search_recursion(array,
 					value, l, m));
 	}
-	return (-1)
+	return (-1);
 }
 
 /**
